@@ -1,0 +1,20 @@
+# Entradas de /etc/hosts para o ambiente DevOps containerizado (k3d)
+# =============================================================================
+# Diferente do ambiente antigo (WSL2 + k3s nativo), aqui NÃO é preciso
+# descobrir o IP do WSL2 — o k3d expõe as portas 80/443 diretamente no
+# 127.0.0.1 do host (ver setup/00-create-cluster.sh, flags "-p 80:80@loadbalancer").
+# Ou seja: em qualquer máquina (Windows, Mac, Linux), essas entradas são
+# sempre 127.0.0.1, sem exceção.
+#
+#  Windows: C:\Windows\System32\drivers\etc\hosts
+#           (Abrir Notepad como Administrador)
+#
+#  Linux/Mac: /etc/hosts
+#           (sudo nano /etc/hosts)
+# =============================================================================
+
+127.0.0.1  rancher.lab.local
+127.0.0.1  argocd.lab.local
+127.0.0.1  gitlab.lab.local
+127.0.0.1  registry.lab.local
+127.0.0.1  sonarqube.lab.local

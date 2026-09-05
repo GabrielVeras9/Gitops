@@ -1,0 +1,21 @@
+services:
+  toolbox:
+    build: .
+    image: devops-lab-toolbox:latest
+    container_name: devops-toolbox
+    stdin_open: true
+    tty: true
+    working_dir: /workspace
+    environment:
+      - KUBECONFIG=/root/.kube/config
+    extra_hosts:
+      # Necessário no Linux para host.docker.internal funcionar (no Docker
+      # Desktop Windows/Mac já vem pronto por padrão)
+      - "host.docker.internal:host-gateway"
+    volumes:
+      - ./setup:/workspace/setup
+      - kubeconfig:/root/.kube
+      - /var/run/docker.sock:/var/run/docker.sock
+
+volumes:
+  kubeconfig:
